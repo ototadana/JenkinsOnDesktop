@@ -33,7 +33,7 @@ Setup
 Set-ExecutionPolicy RemoteSigned
 ```
 
-![Set-ExecutionPolicy](./Document/images/Screenshot-01.png)
+![Set-ExecutionPolicy](./Document/images/Screenshot-02.png)
 
 *   see also:
     *   [Running Windows PowerShell Scripts](http://technet.microsoft.com/en-us/library/ee176949.aspx)
