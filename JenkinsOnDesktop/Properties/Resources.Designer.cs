@@ -260,7 +260,7 @@ namespace XPFriend.JenkinsOnDesktop.Properties {
         /// <summary>
         ///   jenkins.png and jenkins_icon.ico by the Jenkins project (http://jenkins-ci.org/) / CC BY-SA 3.0.
         ///
-        ///sad.png, oni.png, onibi.png and ninja.png by いまいまさのぶ (http://d.hatena.ne.jp/masanobuimai/) / CC BY-SA 3.0.
+        ///sad.png, oni.png, onibi.png and ninja.png by Masanobu Imai (http://d.hatena.ne.jp/masanobuimai/) / CC BY-SA 3.0.
         ///
         ///Butler.xml and feel.ps1 by XPFriend Community (http://xpfriend.com/) / the MIT License. に類似しているローカライズされた文字列を検索します。
         /// </summary>
