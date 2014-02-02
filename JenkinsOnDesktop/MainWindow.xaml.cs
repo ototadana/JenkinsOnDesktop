@@ -300,6 +300,7 @@ namespace XPFriend.JenkinsOnDesktop
             messageText.FontFamily = butler.MessageStyle.FontFamily;
             messageText.FontSize = butler.MessageStyle.FontSize;
             messageText.ToolTip = butler.SourceUrl;
+            messageText.Foreground = butler.MessageStyle.Foreground;
             message.Opacity = 1.0;
             message.Width = butler.MessageStyle.Width;
             message.Height = butler.MessageStyle.Height;

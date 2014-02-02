@@ -8,7 +8,7 @@ Today, Jenkins the butler will come to your desktop.
 
 Feature
 -------
-*   Mr. Jenkins notifies you of current job status on [Jenkins](http://jenkins-ci.org/) Server.
+*   Mr. Jenkins notifies you of current job status on [Jenkins](http://jenkins-ci.org/) server.
 
 
 Requirement
@@ -19,7 +19,7 @@ Requirement
 
 Download
 --------
-*   [http://xpfriend.com/jod/JenkinsOnDesktop-0.9.zip](http://xpfriend.com/jod/JenkinsOnDesktop-0.9.zip)
+*   [http://xpfriend.com/jod/JenkinsOnDesktop-0.9.1.zip](http://xpfriend.com/jod/JenkinsOnDesktop-0.9.1.zip)
 
 
 Setup
@@ -50,9 +50,9 @@ Set-ExecutionPolicy RemoteSigned
 ![Click "Business" tab](./Document/images/Configuration-01.png)
 
 
-### 4. Input your Jenkins Server URL
+### 4. Input your Jenkins server URL
 
-![Input your Jenkins Server URL](./Document/images/Configuration-02.png)
+![Input your Jenkins server URL](./Document/images/Configuration-02.png)
 
 
 License

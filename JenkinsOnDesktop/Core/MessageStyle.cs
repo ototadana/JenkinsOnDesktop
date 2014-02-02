@@ -19,6 +19,9 @@ namespace XPFriend.JenkinsOnDesktop.Core
         public CornerRadius CornerRadius { get; set; }
 
         [DefaultValue(null)]
+        public Brush Foreground { get; set; }
+
+        [DefaultValue(null)]
         public Brush Background { get; set; }
 
         [DefaultValue(null)]
