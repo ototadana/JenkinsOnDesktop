@@ -49,6 +49,7 @@ namespace XPFriend.JenkinsOnDesktop
 
             this.messageText.MouseLeftButtonDown += (sender, e) => ShowSourceUrl();
             this.butlerImage.MouseLeftButtonDown += (sender, e) => MoveWindow();
+            this.configuration.MouseLeftButtonDown += (sender, e) => MoveWindow();
             this.exitButton.Click += (sender, e) => Exit(this.Workspace.Butler);
             this.showConfigurationButton.Click += (sender, e) => ShowConfiguration(this.Workspace.Butler);
             this.parameters.LostFocus += (sender, e) => this.businessExamplesPopup.IsOpen = false;
@@ -291,7 +292,7 @@ namespace XPFriend.JenkinsOnDesktop
 
         private static void UpdateMessage(Border message, TextBlock messageText, Butler butler)
         {
-            message.Visibility = Visibility.Collapsed;
+            message.Visibility = Visibility.Hidden;
             if (!butler.HasMessage)
             {
                 return;
@@ -435,7 +436,7 @@ namespace XPFriend.JenkinsOnDesktop
             Storyboard storyBoard = CreateFadeAnimation(element, 1.0, 0.0);
             storyBoard.Completed += (sender, e) =>
             {
-                element.Visibility = Visibility.Collapsed;
+                element.Visibility = Visibility.Hidden;
                 element.Opacity = 1.0;
                 if (action != null)
                 {
