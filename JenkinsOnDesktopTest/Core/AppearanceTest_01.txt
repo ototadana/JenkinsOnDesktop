@@ -1,6 +1,6 @@
 ﻿<Appearance IconFile="jenkins_icon.ico" ImageFile="jenkins.png" BalloonTipTimeout="10" Topmost="False" xmlns="http://xpfriend.com/jod/xaml">
   <Appearance.MessageStyle>
-    <MessageStyle Position="Right" Padding="12,12,12,12" FontSize="14" FontFamily="Meiryo" Width="0" Height="0" BorderThickness="0,0,0,0" CornerRadius="0,0,0,0" />
+    <MessageStyle Position="Right" Padding="12,12,12,12" FontSize="14" FontFamily="Meiryo" Width="0" Height="0" BorderThickness="0,0,0,0" CornerRadius="0,0,0,0" Foreground="#FF000000" />
   </Appearance.MessageStyle>
   <Appearance.EnterAnimation>
     <Timelines />
