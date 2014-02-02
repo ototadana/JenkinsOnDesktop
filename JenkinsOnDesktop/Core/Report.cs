@@ -70,31 +70,41 @@ namespace XPFriend.JenkinsOnDesktop.Core
 
         internal string Format(string format)
         {
-            if (format == null || this.Hashtable == null || this.Hashtable.Count == 0)
+            if (string.IsNullOrWhiteSpace(format))
             {
                 return null;
             }
 
-            List<object> args = new List<object>(this.Hashtable.Count);
+            object[] args = EditFormatAndGetArgs(ref format, this.Hashtable);
+            try
+            {
+                return string.Format(format, args);
+            }
+            catch (FormatException)
+            {
+                return null;
+            }
+        }
+
+        private static object[] EditFormatAndGetArgs(ref string format, Hashtable hashtable)
+        {
+            if (hashtable == null)
+            {
+                return new object[0];
+            }
+
+            List<object> args = new List<object>(hashtable.Count);
             int index = 0;
-            foreach (string key in this.Hashtable.Keys)
+            foreach (string key in hashtable.Keys)
             {
                 Regex regex = new Regex("\\{" + key + "\\}", RegexOptions.IgnoreCase);
                 if (regex.IsMatch(format))
                 {
                     format = regex.Replace(format, "{" + index++ + "}");
-                    args.Add(this.Hashtable[key]);
+                    args.Add(hashtable[key]);
                 }
             }
-
-            try
-            {
-                return string.Format(format, args.ToArray());
-            }
-            catch (FormatException)
-            {
-                return "";
-            }
+            return args.ToArray();
         }
     }
 }

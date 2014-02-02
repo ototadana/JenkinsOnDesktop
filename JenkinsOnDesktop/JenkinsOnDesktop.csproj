@@ -63,8 +63,10 @@
     </ApplicationDefinition>
     <Compile Include="Core\BusinessInformation.cs" />
     <Compile Include="Core\Business.cs" />
+    <Compile Include="Core\ButlerFactory.cs" />
     <Compile Include="Core\Configuration.cs" />
     <Compile Include="Core\Appearances.cs" />
+    <Compile Include="Core\Folder\ProcessWrapper.cs" />
     <Compile Include="Core\Util\BitmapUtil.cs" />
     <Compile Include="Core\Folder\BusinessesFolder.cs" />
     <Compile Include="Core\ScriptEngine\BusinessInformationScriptEngine.cs" />

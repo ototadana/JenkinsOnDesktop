@@ -72,7 +72,7 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
         internal static void Open(string name)
         {
             SetupFolderIfNotExists(name);
-            Process.Start(GetFolder(name));
+            WorkspaceFolder.Open(GetFolder(name));
         }
     }
 }

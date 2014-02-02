@@ -6,7 +6,7 @@ namespace XPFriend.JenkinsOnDesktop
     [TestClass]
     public class MainWindowTest
     {
-        [TestMethod]
+        //[TestMethod]
         public void TestCurrentProperty()
         {
             // setup

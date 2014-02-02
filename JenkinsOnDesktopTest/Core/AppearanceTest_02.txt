@@ -1,0 +1,14 @@
+﻿<Appearance IconFile="jenkins_icon.ico" ImageFile="imageFile1" BalloonTipTimeout="10" Topmost="False" MessageText="messageText1" BalloonTipText="balloonTipText1" BalloonTipTitle="title1" xmlns="http://xpfriend.com/jod/xaml" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+  <Appearance.MessageStyle>
+    <MessageStyle Position="Right" Padding="12,12,12,12" FontSize="14" FontFamily="Meiryo" Width="200" Height="200" BorderBrush="#FF000000" BorderThickness="6,6,6,6" CornerRadius="8,8,8,8" Foreground="#FF000000" Background="#FFFFFFFF" />
+  </Appearance.MessageStyle>
+  <Appearance.EnterAnimation>
+    <Operation Command="UpdateWindow" />
+    <SlideIn Position="LeftBottom" Direction="Right" BeginTime="00:00:00.1000000" DecelerationRatio="0.8" Duration="00:00:01" />
+    <Operation Command="ShowMessage" BeginTime="00:00:01.2000000" />
+  </Appearance.EnterAnimation>
+  <Appearance.ExitAnimation>
+    <Operation Command="HideMessage" />
+    <SlideOut Direction="Left" AccelerationRatio="0.8" BeginTime="00:00:00.3000000" Duration="00:00:01" />
+  </Appearance.ExitAnimation>
+</Appearance>

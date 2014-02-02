@@ -259,7 +259,7 @@ namespace XPFriend.JenkinsOnDesktop
         #region "Window : Operations"
         internal void ShowMessage()
         {
-            if (string.IsNullOrEmpty(this.messageText.Text))
+            if (string.IsNullOrWhiteSpace(this.messageText.Text))
             {
                 return;
             }
@@ -553,7 +553,7 @@ namespace XPFriend.JenkinsOnDesktop
             string name = (string)this.butlerName.SelectedValue;
             if (!string.IsNullOrEmpty(name))
             {
-                UpdateButlerInformations(Butler.GetInstance(name, false));
+                UpdateButlerInformations(Butler.GetInstance(name));
             }
         }
 

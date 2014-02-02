@@ -41,58 +41,98 @@ namespace XPFriend.JenkinsOnDesktop.Core
             this.ExitAnimation = new Timelines();
         }
 
-        private static Storyboard CreateStoryBoard(Timelines timelines)
+        internal Appearance(
+            string title, string balloonTipText, string messageText,
+            string imageFile, Bitmap bitmap) :
+            this(title, balloonTipText, messageText, imageFile, bitmap, true)
         {
-            Storyboard storyBoard = new Storyboard();
-            storyBoard.FillBehavior = FillBehavior.HoldEnd;
+        }
+
+        internal Appearance(
+            string title, string balloonTipText, string messageText,
+            string imageFile, Bitmap bitmap, bool useDefaultAnimation) : this()
+        {
+            this.BalloonTipTitle = title;
+            this.BalloonTipText = balloonTipText;
+            this.MessageText = messageText;
+            this.Bitmap = bitmap;
+
+            if (imageFile != null)
+            {
+                this.ImageFile = imageFile;
+            }
+
+            if (useDefaultAnimation)
+            {
+                this.GetEnterAnimationAsStoryboard();
+                this.GetExitAnimationAsStoryboard();
+            }
+
+            this.MessageStyle.SetDefaultStyle();
+        }
+
+        private static Storyboard CreateStoryboard(Timelines timelines)
+        {
+            Storyboard storyboard = new Storyboard();
+            storyboard.FillBehavior = FillBehavior.HoldEnd;
             foreach (Timeline timeline in timelines)
             {
-                storyBoard.Children.Add(timeline);
+                storyboard.Children.Add(timeline);
             }
-            return storyBoard;
+            return storyboard;
         }
 
         internal Storyboard GetEnterAnimationAsStoryboard()
         {
             if (this.EnterAnimation.Count == 0)
             {
-                this.EnterAnimation.Add(new Operation()
-                {
-                    Command = Command.UpdateWindow
-                });
-
-                this.EnterAnimation.Add(new SlideIn()
-                {
-                    Direction = Direction.Right,
-                    Position = Position.LeftBottom,
-                    BeginTime = TimeSpan.FromSeconds(0.5)
-                });
-
-                this.EnterAnimation.Add(new Operation()
-                {
-                    Command = Command.ShowMessage,
-                    BeginTime = TimeSpan.FromSeconds(1.5)
-                });
+                SetupDefaultEnterAnimation(this.EnterAnimation);
             }
-            return CreateStoryBoard(EnterAnimation);
+            return CreateStoryboard(this.EnterAnimation);
         }
 
-        internal Storyboard GetExitAnimationAsStoryBoard()
+        private static void SetupDefaultEnterAnimation(Timelines enterAnimation)
+        {
+            enterAnimation.Add(new Operation()
+            {
+                Command = Command.UpdateWindow
+            });
+
+            enterAnimation.Add(new SlideIn()
+            {
+                Direction = Direction.Right,
+                Position = Position.LeftBottom,
+                BeginTime = TimeSpan.FromSeconds(0.1)
+            });
+
+            enterAnimation.Add(new Operation()
+            {
+                Command = Command.ShowMessage,
+                BeginTime = TimeSpan.FromSeconds(1.2)
+            });
+        }
+
+        internal Storyboard GetExitAnimationAsStoryboard()
         {
             if (this.ExitAnimation.Count == 0)
             {
-                this.ExitAnimation.Add(new Operation()
-                {
-                    Command = Command.HideMessage
-                });
-
-                this.ExitAnimation.Add(new SlideOut()
-                {
-                    Direction = Direction.Left,
-                    BeginTime = TimeSpan.FromSeconds(0.3)
-                });
+                SetupDefaultExitAnimation(this.ExitAnimation);
             }
-            return CreateStoryBoard(ExitAnimation);
+            return CreateStoryboard(this.ExitAnimation);
+        }
+
+        private static void SetupDefaultExitAnimation(Timelines exitAnimation)
+        {
+            exitAnimation.Add(new Operation()
+            {
+                Command = Command.HideMessage
+            });
+
+            exitAnimation.Add(new SlideOut()
+            {
+                Direction = Direction.Left,
+                BeginTime = TimeSpan.FromSeconds(0.3)
+            });
         }
     }
 }

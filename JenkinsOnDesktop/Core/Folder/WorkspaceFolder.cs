@@ -14,19 +14,25 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
         private const string ConfigurationFile = "Config.xml";
         private static string applicationPath;
 
+        internal static ProcessWrapper processWrapper = new ProcessWrapper();
+
         internal static string FullName
         {
-            get { return applicationPath; }
+            get { return WorkspaceFolder.applicationPath; }
         }
 
         internal static bool HasConfigurationFile
         {
-            get { return File.Exists(Path.Combine(FullName, ConfigurationFile)); }
+            get 
+            { 
+                return File.Exists(Path.Combine(
+                    WorkspaceFolder.FullName, WorkspaceFolder.ConfigurationFile)); 
+            }
         }
 
         static WorkspaceFolder()
         {
-            applicationPath = GetApplicationPath();
+            WorkspaceFolder.applicationPath = GetApplicationPath();
         }
 
         private static string GetApplicationPath()
@@ -38,6 +44,11 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
                 Directory.CreateDirectory(applicationPath);
             }
             return applicationPath;
+        }
+
+        internal static void SetApplicationPath(string path)
+        {
+            WorkspaceFolder.applicationPath = path;
         }
 
         internal static void SaveScript(byte[] bytes, string folder, string file)
@@ -124,6 +135,11 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
                 throw new ApplicationException(
                     string.Format(Resources.Error_InvalidCharacter, ch, name));
             }
+        }
+
+        internal static void Open(string path)
+        {
+            processWrapper.Start(path);
         }
     }
 }

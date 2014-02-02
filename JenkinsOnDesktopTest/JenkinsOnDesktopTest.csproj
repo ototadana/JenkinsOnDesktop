@@ -39,7 +39,10 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
+    <Reference Include="System.XML" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <Choose>
@@ -55,6 +58,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Core\Folder\ButlersFolderTest.cs" />
+    <Compile Include="Core\ReportTest.cs" />
+    <Compile Include="Core\AppearanceTest.cs" />
+    <Compile Include="Core\TestUtil.cs" />
+    <Compile Include="Core\MessageStyleTest.cs" />
+    <Compile Include="Core\ButlerFactoryTest.cs" />
+    <Compile Include="Core\ButlerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MainWindowTest.cs" />
   </ItemGroup>
@@ -63,6 +73,17 @@
       <Project>{53ef0eb5-4d51-4857-a92f-137f70692d9e}</Project>
       <Name>JenkinsOnDesktop</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Core\AppearanceTest_01.txt" />
+    <Content Include="Core\AppearanceTest_02.txt" />
+    <Content Include="Core\ButlerFactoryTest_CalmJenkins_en-US.txt" />
+    <Content Include="Core\ButlerFactoryTest_CalmJenkins_ja-JP.txt" />
+    <Content Include="Core\ButlerFactoryTest_EmotionalJenkins_en-US.txt" />
+    <Content Include="Core\ButlerFactoryTest_EmotionalJenkins_ja-JP.txt" />
+    <Content Include="Core\Folder\xpf.ico" />
+    <Content Include="Core\MessageStyleTest_01.txt" />
+    <Content Include="Core\MessageStyleTest_02.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

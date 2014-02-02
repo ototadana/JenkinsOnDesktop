@@ -1,0 +1,1 @@
+﻿<MessageStyle Position="Right" Padding="12,12,12,12" FontSize="14" FontFamily="Meiryo" Width="0" Height="0" BorderThickness="0,0,0,0" CornerRadius="0,0,0,0" xmlns="http://xpfriend.com/jod/xaml" />

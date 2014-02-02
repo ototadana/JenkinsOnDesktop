@@ -43,7 +43,7 @@ namespace XPFriend.JenkinsOnDesktop
                 Workspace workspace = Workspace.Current;
                 if (workspace.Butler == null)
                 {
-                    workspace.Butler = Butler.CreateEmotionalJenkins();
+                    workspace.Butler = ButlerFactory.CreateEmotionalJenkins();
                     window.ContextMenu = new ContextMenu();
                     window.ContextMenu.Items.Add(CreateQuitMenuItem(window));
                 }

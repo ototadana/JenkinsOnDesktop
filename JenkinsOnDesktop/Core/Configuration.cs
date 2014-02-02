@@ -10,7 +10,7 @@ namespace XPFriend.JenkinsOnDesktop.Core
 
         public Configuration()
         {
-            this.Butler = XPFriend.JenkinsOnDesktop.Core.Butler.EmotionalJenkins;
+            this.Butler = ButlerFactory.EmotionalJenkins;
             this.Business = BusinessesFolder.CheckJobStatus;
             this.DesktopMargin = 50;
         }

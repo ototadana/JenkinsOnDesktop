@@ -16,8 +16,8 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
 
         internal static void Initialize(string name)
         {
-            SetupFolder(Butler.CreateCalmJenkins(), Resources.CalmJ_feel);
-            SetupFolder(Butler.CreateEmotionalJenkins(), Resources.EmotionalJ_feel);
+            SetupFolder(ButlerFactory.CreateCalmJenkins(), Resources.CalmJ_feel);
+            SetupFolder(ButlerFactory.CreateEmotionalJenkins(), Resources.EmotionalJ_feel);
             SetupFolderIfNotExists(name);
         }
 
@@ -51,9 +51,9 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
 
         private static void SaveResources(string butlerFolder, Butler butler, byte[] feelScript)
         {
-            SaveIcon(butler.GetDefaultAppearance(), butlerFolder);
             foreach (Appearance appearance in butler.Appearances.Values)
             {
+                SaveIcon(appearance, butlerFolder);
                 SaveImage(appearance, butlerFolder);
             }
             WorkspaceFolder.SaveScript(feelScript, butlerFolder, "feel.ps1");
@@ -82,20 +82,28 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
                 string path = Path.Combine(butlerFolder, appearance.ImageFile);
                 if (!File.Exists(path))
                 {
-                    appearance.Bitmap.Save(path);
+                    using (FileStream fs = new FileStream(path, FileMode.Create))
+                    {
+                        appearance.Bitmap.Save(fs, appearance.Bitmap.RawFormat);
+                        fs.Close();
+                    }
                 }
             }
         }
 
-        internal static Butler Load(string name, bool createButlersFolderIfNotExists)
+        internal static Butler Load(string name)
         {
-            if (!createButlersFolderIfNotExists && !Directory.Exists(GetFolder(name)))
+            Butler butler;
+            if (Directory.Exists(GetFolder(name)))
             {
-                return Butler.CreateEmotionalJenkins();
+                string butlerSettingFile = GetSettingFile(name);
+                butler = LoadButler(name, butlerSettingFile);
+            }
+            else
+            {
+                butler = ButlerFactory.CreateDefaultButler(name, name, name);
             }
 
-            string butlerSettingFile = GetSettingFile(name);
-            Butler butler = LoadButler(name, butlerSettingFile);
             InitializeAppearances(butler, GetFolder(name));
             return butler;
         }
@@ -118,7 +126,7 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
         {
             if(!Directory.Exists(GetFolder(name)))
             {
-                SetupFolder(Butler.CreateDefaultButler(name, name, name), Resources.EmotionalJ_feel);
+                SetupFolder(ButlerFactory.CreateDefaultButler(name, name, name), Resources.EmotionalJ_feel);
             }
         }
 
@@ -141,7 +149,7 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
             try
             {
                 string file = Path.Combine(butlerFolder, appearance.ImageFile);
-                appearance.Image = new BitmapImage(new Uri(file));
+                appearance.Image = BitmapUtil.ToBitmapSource(LoadImage(file));
             }
             catch (Exception)
             {
@@ -154,10 +162,20 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
             }
         }
 
+        private static Bitmap LoadImage(string file)
+        {
+            using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+            {
+                Bitmap image = (Bitmap)Bitmap.FromStream(fs);
+                fs.Close();
+                return image;
+            }
+        }
+
         private static void LoadImage(MessageStyle style, string butlerFolder)
         {
             string file = Path.Combine(butlerFolder, style.BackgroundFile);
-            BitmapImage image = new BitmapImage(new Uri(file));
+            BitmapSource image = BitmapUtil.ToBitmapSource(LoadImage(file));
             style.Background = new ImageBrush(image);
 
             if (style.Width == 0)
@@ -179,7 +197,7 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
         internal static void Open(string name)
         {
             SetupFolderIfNotExists(name);
-            Process.Start(GetFolder(name));
+            WorkspaceFolder.Open(GetFolder(name));
         }
     }
 }

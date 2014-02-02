@@ -22,7 +22,7 @@ namespace XPFriend.JenkinsOnDesktop.Core
         {
             this.report = new Report();
             this.Configuration = Configuration.GetInstance();
-            this.Butler = Butler.GetInstance(this.Configuration.Butler, true);
+            this.Butler = Butler.GetInstance(this.Configuration.Butler);
             this.Business = Business.GetInstance(this.Configuration.Business);
         }
 
