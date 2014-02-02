@@ -35,6 +35,7 @@ namespace XPFriend.JenkinsOnDesktop.Core
             this.Padding = new Thickness(12);
             this.FontFamily = new FontFamily("Meiryo");
             this.FontSize = 14;
+            this.Foreground = new SolidColorBrush(Colors.Black);
         }
 
         internal void SetDefaultStyle()
@@ -44,7 +45,6 @@ namespace XPFriend.JenkinsOnDesktop.Core
             this.BorderBrush = new SolidColorBrush(Colors.Black);
             this.BorderThickness = new Thickness(6);
             this.CornerRadius = new CornerRadius(8);
-            this.Foreground = new SolidColorBrush(Colors.Black);
             this.Background = new SolidColorBrush(Colors.White);
         }
     }
