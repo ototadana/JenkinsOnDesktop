@@ -5,6 +5,7 @@ Today, Jenkins the butler will come to your desktop.
 
 ![Screenshot](./Document/images/Screenshot-01.png)
 
+[日本語](./README.ja.md)
 
 Feature
 -------

@@ -1,12 +1,12 @@
-Butler
-======
+執事
+====
 
 Butler.xml
 ----------
-Edit Butler.xml, so you can change your butler's information and appearances.
+Butler.xml で、執事の情報や見た目を変更できます。
 
 
-### 1. Butler's name and information
+### 1. 執事の名前や情報
 
 ```
 <Butler 
@@ -23,9 +23,9 @@ Edit Butler.xml, so you can change your butler's information and appearances.
 
 
 
-### 2. Appearances
+### 2. 見た目
 
-A butler has appearances that according to feelings (e.g. Normal, Angry, Sad and Happy).
+感情 (Normal, Angry, Sad, Happy 等) に応じた見た目を定義できます。
 
 ```
 <Butler>
@@ -43,11 +43,11 @@ A butler has appearances that according to feelings (e.g. Normal, Angry, Sad and
     IconFile="jenkins_icon.ico"                     ... (1)
     BalloonTipText="{}{Subject} {CurrentStatus}"    ... (2)
     BalloonTipTitle="{}{Title}"                     ... (3) 
-    BalloonTipTimeout="10"                          ... The time period in seconds that the balloon tip should display.
+    BalloonTipTimeout="10"                          ... バルーンチップ表示される時間（秒）。
     ImageFile="jenkins.png"                         ... (4)
     MessageText="{}{Subject} {CurrentStatus}"       ... (5)
-    Topmost="False"                                 ... True if the butler's window is topmost.
-    x:Key="Normal">                                 ... A feeling that the appearance imply.
+    Topmost="False"                                 ... 常に最前面表示するかどうか。
+    x:Key="Normal">                                 ... この姿が示す感情。
 ```
 
 ![Appearance (BallonTip)](./images/Butler-01.png?raw=true)
@@ -56,7 +56,7 @@ A butler has appearances that according to feelings (e.g. Normal, Angry, Sad and
 
 
 
-### 3. Message Style
+### 3. メッセージスタイル
 
 ```
 <Appearance>
@@ -85,7 +85,7 @@ A butler has appearances that according to feelings (e.g. Normal, Angry, Sad and
 ![MessageStyle](./images/MessageStyle-01.png?raw=true)
 
 
-### 4. Animation
+### 4. アニメーション
 ```
 <Appearance>
   <Appearance.EnterAnimation>	... Entering animations of the butler.
@@ -101,7 +101,7 @@ A butler has appearances that according to feelings (e.g. Normal, Angry, Sad and
 </Appearance>
 ```
 
-#### Operation
+#### ウインドウ操作 Operation
 <pre>
 &lt;Operation 
     BeginTime="00:00:01"        ... <a href="http://msdn.microsoft.com/en-us/library/system.timespan(v=vs.100).aspx">TimeSpan</a>
@@ -109,7 +109,7 @@ A butler has appearances that according to feelings (e.g. Normal, Angry, Sad and
 /&gt;
 </pre>
 
-#### SlideIn
+#### スライドイン SlideIn
 <pre>
 &lt;SlideIn
     BeginTime="00:00:01"        ... <a href="http://msdn.microsoft.com/en-us/library/system.timespan(v=vs.100).aspx">TimeSpan</a>
@@ -120,7 +120,7 @@ A butler has appearances that according to feelings (e.g. Normal, Angry, Sad and
 </pre>
 
 
-#### SlideOut
+#### スライドアウト SlideOut
 <pre>
 &lt;SlideOut
     BeginTime="00:00:01"        ... <a href="http://msdn.microsoft.com/en-us/library/system.timespan(v=vs.100).aspx">TimeSpan</a>
@@ -129,7 +129,7 @@ A butler has appearances that according to feelings (e.g. Normal, Angry, Sad and
 /&gt;
 </pre>
 
-#### FadeIn
+#### フェードイン FadeIn
 <pre>
 &lt;FadeIn
     BeginTime="00:00:01"        ... <a href="http://msdn.microsoft.com/en-us/library/system.timespan(v=vs.100).aspx">TimeSpan</a>
@@ -138,7 +138,7 @@ A butler has appearances that according to feelings (e.g. Normal, Angry, Sad and
 /&gt;
 </pre>
 
-#### FadeOut
+#### フェードアウト FadeOut
 <pre>
 &lt;FadeOut
     BeginTime="00:00:01"        ... <a href="http://msdn.microsoft.com/en-us/library/system.timespan(v=vs.100).aspx">TimeSpan</a>
@@ -150,13 +150,13 @@ A butler has appearances that according to feelings (e.g. Normal, Angry, Sad and
 
 feel.ps1
 --------
-You can program the butler's feelings arise from reading a [report](./Report.md).
+[レポート](./Report.ja.md)を読んだ執事の感情をプログラムすることができます。
 
-*   The feel.ps1 is a PowerShell script.
-*   It must have a Main function as an entry point.
-*   The Main function must return a feeling as a string.
-*   Automatic variable $report is available as latest [report](./Report.md).
+*   feel.ps1 は PowerShell スクリプトとして記述します。
+*   Main ファンクションが必要です。
+*   Main ファンクションは感情（文字列）を返す必要があります。
+*   最新の[レポート](./Report.ja.md)として $report 自動変数を使用することができます。
 
-### Examples
+### 実装例
 *   [Calm-Jenkins](../JenkinsOnDesktop/Resources/Scripts/Butlers/Calm-Jenkins/feel.ps1)
 *   [Emotional-Jenkins](../JenkinsOnDesktop/Resources/Scripts/Butlers/Emotional-Jenkins/feel.ps1)
