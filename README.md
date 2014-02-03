@@ -55,6 +55,12 @@ Set-ExecutionPolicy RemoteSigned
 ![Input your Jenkins server URL](./Document/images/Configuration-02.png)
 
 
+Make new butler
+---------------
+You can make new butlers and businesses.
+See [JenkinsOnDesktop Owner's Guide](./Document/OwnersGuide.md).
+
+
 License
 -------
 *   This software is released under the MIT License.
