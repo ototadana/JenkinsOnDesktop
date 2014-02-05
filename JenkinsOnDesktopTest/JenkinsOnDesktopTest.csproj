@@ -59,12 +59,18 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Core\Folder\ButlersFolderTest.cs" />
+    <Compile Include="Core\Folder\BusinessesFolderTest.cs" />
+    <Compile Include="Core\Folder\WorkspaceFolderTest.cs" />
     <Compile Include="Core\ReportTest.cs" />
     <Compile Include="Core\AppearanceTest.cs" />
     <Compile Include="Core\TestUtil.cs" />
     <Compile Include="Core\MessageStyleTest.cs" />
     <Compile Include="Core\ButlerFactoryTest.cs" />
     <Compile Include="Core\ButlerTest.cs" />
+    <Compile Include="Core\BusinessTest.cs" />
+    <Compile Include="Core\ConfigurationTest.cs" />
+    <Compile Include="Core\BusinessInformationTest.cs" />
+    <Compile Include="Core\WorkspaceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MainWindowTest.cs" />
   </ItemGroup>

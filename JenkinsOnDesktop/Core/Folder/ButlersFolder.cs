@@ -56,7 +56,7 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
                 SaveIcon(appearance, butlerFolder);
                 SaveImage(appearance, butlerFolder);
             }
-            WorkspaceFolder.SaveScript(feelScript, butlerFolder, "feel.ps1");
+            WorkspaceFolder.SaveScriptIfNotExists(feelScript, butlerFolder, "feel.ps1");
         }
 
         private static void SaveIcon(Appearance appearance, string butlerFolder)

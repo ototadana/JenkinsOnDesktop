@@ -51,7 +51,7 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
             WorkspaceFolder.applicationPath = path;
         }
 
-        internal static void SaveScript(byte[] bytes, string folder, string file)
+        internal static void SaveScriptIfNotExists(byte[] bytes, string folder, string file)
         {
             if (!Directory.Exists(folder))
             {

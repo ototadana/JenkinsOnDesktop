@@ -36,8 +36,8 @@ namespace XPFriend.JenkinsOnDesktop.Core.Folder
         {
             WorkspaceFolder.ValidateAsFileName(name);
             string folder = GetFolder(name);
-            WorkspaceFolder.SaveScript(ps, folder, "main.ps1");
-            WorkspaceFolder.SaveScript(psd, Path.Combine(folder, "ja-JP"), "main.psd1");
+            WorkspaceFolder.SaveScriptIfNotExists(ps, folder, "main.ps1");
+            WorkspaceFolder.SaveScriptIfNotExists(psd, Path.Combine(folder, "ja-JP"), "main.psd1");
         }
 
         internal static IEnumerable<string> GetFolderNames()

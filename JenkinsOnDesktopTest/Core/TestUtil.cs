@@ -30,8 +30,8 @@ namespace XPFriend.JenkinsOnDesktop.Core
             {
                 Directory.Delete(path, true);
             }
-            Directory.CreateDirectory(path);
             WorkspaceFolder.SetApplicationPath(path);
+            WorkspaceFolder.LoadConfiguration();
         }
 
         internal static string WorkingDirectory { get { return Path.GetFullPath(workingDirectory); } }
