@@ -64,15 +64,15 @@ namespace XPFriend.JenkinsOnDesktop.Animation
             }
             else if (e.Property == LeftProperty)
             {
-                MainWindow.Current.Left = (double)e.NewValue;
+                window.Left = (double)e.NewValue;
             }
             else if (e.Property == TopProperty)
             {
-                MainWindow.Current.Top = (double)e.NewValue;
+                window.Top = (double)e.NewValue;
             }
             else if (e.Property == OpacityProperty)
             {
-                MainWindow.Current.Opacity = (double)e.NewValue;
+                window.Opacity = (double)e.NewValue;
             }
         }
 
@@ -140,7 +140,7 @@ namespace XPFriend.JenkinsOnDesktop.Animation
         private static double GetRight(MainWindow window, double margin)
         {
             double width = window.ScreenWidth - margin;
-            return ConvertNaNToZero(width - MainWindow.Current.ActualWidth);
+            return ConvertNaNToZero(width - window.ActualWidth);
         }
 
         internal static double GetCenter(MainWindow window)
@@ -161,7 +161,7 @@ namespace XPFriend.JenkinsOnDesktop.Animation
         private static double GetBottom(MainWindow window, double margin)
         {
             double height = window.ScreenHeight - margin;
-            return ConvertNaNToZero(height - MainWindow.Current.ActualHeight);
+            return ConvertNaNToZero(height - window.ActualHeight);
         }
 
         internal static double GetMiddle(MainWindow window)

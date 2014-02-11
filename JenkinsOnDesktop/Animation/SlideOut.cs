@@ -37,14 +37,12 @@ namespace XPFriend.JenkinsOnDesktop.Animation
             Window window = MainWindow.Current;
             Direction direction = this.Direction;
             if (direction == Direction.Left || 
-                direction == Direction.Right || 
-                direction == Direction.Center)
+                direction == Direction.Right)
             {
                 return window.Left;
             }
             else // if (direction == Direction.Top || 
-                 //     direction == Direction.Bottom || 
-                 //     direction == Direction.Middle)
+                 //     direction == Direction.Bottom)
             {
                 return window.Top;
             }

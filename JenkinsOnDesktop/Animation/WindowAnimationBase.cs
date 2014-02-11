@@ -25,12 +25,21 @@ namespace XPFriend.JenkinsOnDesktop.Animation
             this.Duration = new Duration(TimeSpan.FromSeconds(1));
         }
 
-        public override object GetCurrentValue(
+        public sealed override object GetCurrentValue(
             object defaultOriginValue, 
             object defaultDestinationValue, 
             AnimationClock animationClock)
         {
-            return this.From + (this.To - this.From) * animationClock.CurrentProgress.Value;
+            return GetCurrentValue(defaultOriginValue, defaultDestinationValue, 
+                animationClock.CurrentProgress.Value);
+        }
+
+        protected internal abstract object GetCurrentValue(object defaultOriginValue, 
+            object defaultDestinationValue, double clockValue);
+
+        protected object GetCurrentValue(double clockValue)
+        {
+            return this.From + (this.To - this.From) * clockValue;
         }
 
         protected override bool ShouldSerializeProperty(DependencyProperty dp)

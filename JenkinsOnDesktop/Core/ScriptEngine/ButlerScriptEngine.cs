@@ -19,7 +19,7 @@ namespace XPFriend.JenkinsOnDesktop.Core.ScriptEngine
             string folder = ButlersFolder.GetFolder(name);
             SetWorkingDirectory(powerShell, folder);
             powerShell.AddScript(@"foreach($i in $input) {$report = $i};. .\feel.ps1;Main");
-            Collection<PSObject> results = powerShell.Invoke(new[] { report.Hashtable });
+            Collection<PSObject> results = Invoke(powerShell, new[] { report.Hashtable });
             return GetObject<string>(powerShell, results);
         }
     }

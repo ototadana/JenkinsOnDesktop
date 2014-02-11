@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Management.Automation;
@@ -71,6 +72,20 @@ namespace XPFriend.JenkinsOnDesktop.Core.ScriptEngine
             sb.Append(error).Append(Environment.NewLine);
             sb.Append(error.InvocationInfo.PositionMessage);
             sb.Append(Environment.NewLine);
+        }
+
+        protected Collection<PSObject> Invoke(PowerShell powerShell, IEnumerable input)
+        {
+            try
+            {
+                return powerShell.Invoke(input);
+            }
+            catch (RuntimeException e)
+            {
+                StringBuilder sb = new StringBuilder(GetErrorText(powerShell));
+                Append(sb, e.ErrorRecord);
+                throw new ApplicationException(sb.ToString());
+            }
         }
     }
 }

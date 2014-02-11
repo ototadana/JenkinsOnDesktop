@@ -12,49 +12,13 @@ namespace XPFriend.JenkinsOnDesktop
 {
     public partial class App : Application
     {
-        private static App instance;
-
-        internal static App Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = App.Current as App;
-                }
-                return instance;
-            }
-
-            set
-            {
-                instance = value;
-            }
-        }
-
         internal void Application_DispatcherUnhandledException(
             object sender,
             DispatcherUnhandledExceptionEventArgs e)
         {
             try
             {
-                string errorLogFile = GetErrorLogFile();
-                WriteErrorLog(e.Exception, errorLogFile);
-                MainWindow window = XPFriend.JenkinsOnDesktop.MainWindow.Current;
-                Workspace workspace = Workspace.Current;
-                if (workspace.Butler == null)
-                {
-                    workspace.Butler = ButlerFactory.CreateEmotionalJenkins();
-                    window.ContextMenu = new ContextMenu();
-                    window.ContextMenu.Items.Add(CreateQuitMenuItem(window));
-                }
-                workspace.Butler.SetErrorMessage(GetMessage(e.Exception), errorLogFile);
-                window.Visibility = Visibility.Hidden;
-                window.Left = 50;
-                window.Top = 50;
-                window.UpdateWindow();
-                window.ShowMessage();
-                window.Visibility = Visibility.Visible;
-                window.Activate();
+                HandleException(e.Exception);
             }
             catch (Exception)
             {
@@ -63,7 +27,7 @@ namespace XPFriend.JenkinsOnDesktop
                     "",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
-                App.Instance.Shutdown();
+                App.Current.Shutdown();
             }
             finally
             {
@@ -71,14 +35,20 @@ namespace XPFriend.JenkinsOnDesktop
             }
         }
 
-        private MenuItem CreateQuitMenuItem(MainWindow window)
+        internal void HandleException(Exception exception)
         {
-            MenuItem quitMenuItem = new MenuItem()
-            {
-                Header = XPFriend.JenkinsOnDesktop.Properties.Resources.NotifyIcon_Quit
-            };
-            quitMenuItem.Click += (sn, ev) => window.Quit();
-            return quitMenuItem;
+            string errorLogFile = GetErrorLogFile();
+            WriteErrorLog(exception, errorLogFile);
+            MainWindow window = XPFriend.JenkinsOnDesktop.MainWindow.Current;
+            Workspace.Current.Butler.SetErrorMessage(GetMessage(exception), errorLogFile);
+            window.Visibility = Visibility.Hidden;
+            window.Left = 50;
+            window.Top = 50;
+            window.UpdateWindow();
+            window.ShowMessage();
+            window.Visibility = Visibility.Visible;
+            window.Activate();
+            window.Topmost = false;
         }
 
         private string GetErrorLogFile()

@@ -23,17 +23,17 @@ namespace XPFriend.JenkinsOnDesktop.Animation
             return new FadeIn();
         }
 
-        public override object GetCurrentValue(
+        protected internal override object GetCurrentValue(
             object defaultOriginValue, 
             object defaultDestinationValue, 
-            AnimationClock animationClock)
+            double clockValue)
         {
             if (!this.located)
             {
                 WindowOperator.GetInstance().SetValue(WindowOperator.PositionProperty, this.Position);
                 this.located = true;
             }
-            return base.GetCurrentValue(defaultOriginValue, defaultDestinationValue, animationClock);
+            return base.GetCurrentValue(defaultOriginValue, defaultDestinationValue, clockValue);
         }
     }
 }

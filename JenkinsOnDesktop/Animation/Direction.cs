@@ -3,10 +3,8 @@
     public enum Direction
     {
         Left,
-        Center,
         Right,
         Top,
-        Middle,
         Bottom
     }
 }

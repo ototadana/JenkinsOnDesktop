@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using XPFriend.JenkinsOnDesktop.Core.Folder;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using XPFriend.JenkinsOnDesktop.Core.Folder;
 
 namespace XPFriend.JenkinsOnDesktop.Core
 {

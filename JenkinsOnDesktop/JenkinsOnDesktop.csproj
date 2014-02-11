@@ -87,12 +87,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Animation\AnimationBase.cs" />
+    <Compile Include="Animation\WindowAnimationBase.cs" />
     <Compile Include="Animation\Command.cs" />
     <Compile Include="Animation\Direction.cs" />
     <Compile Include="Animation\Fade.cs" />
     <Compile Include="Animation\FadeIn.cs" />
-    <Compile Include="Animation\Align.cs" />
     <Compile Include="Animation\Locate.cs" />
     <Compile Include="Animation\MoveAnimationBase.cs" />
     <Compile Include="Animation\Operation.cs" />

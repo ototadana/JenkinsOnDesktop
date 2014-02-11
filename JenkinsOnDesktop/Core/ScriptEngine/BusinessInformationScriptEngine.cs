@@ -43,7 +43,7 @@ namespace XPFriend.JenkinsOnDesktop.Core.ScriptEngine
             PowerShell powerShell = base.GetPowerShell();
             powerShell.Runspace.SessionStateProxy.Path.SetLocation(folder);
             powerShell.AddScript(Script);
-            Collection<PSObject> results = powerShell.Invoke();
+            Collection<PSObject> results = Invoke(powerShell, null);
             return results.Select(pso => (Hashtable)pso.BaseObject).First();
         }
 

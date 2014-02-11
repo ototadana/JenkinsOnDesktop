@@ -34,7 +34,7 @@ namespace XPFriend.JenkinsOnDesktop.Animation
             {
                 return window.ScreenWidth * 2;
             }
-            else if(direction == Direction.Right || direction == Direction.Center)
+            else if(direction == Direction.Right)
             {
                 return -window.ScreenWidth;
             }
@@ -42,7 +42,7 @@ namespace XPFriend.JenkinsOnDesktop.Animation
             {
                 return window.ScreenHeight * 2;
             }
-            else // if (direction == Direction.Bottom || direction == Direction.Middle)
+            else // if (direction == Direction.Bottom)
             {
                 return -window.ScreenHeight;
             }
@@ -53,7 +53,6 @@ namespace XPFriend.JenkinsOnDesktop.Animation
             MainWindow window = MainWindow.Current;
             Direction direction = this.Direction;
             if (direction == Direction.Left || 
-                direction == Direction.Center ||
                 direction == Direction.Right)
             {
                 return WindowOperator.GetLeft(window, this.Position);
@@ -64,17 +63,17 @@ namespace XPFriend.JenkinsOnDesktop.Animation
             }
         }
 
-        public override object GetCurrentValue(
+        protected internal override object GetCurrentValue(
             object defaultOriginValue, 
             object defaultDestinationValue, 
-            AnimationClock animationClock)
+            double clockValue)
         {
             if (!this.located)
             {
                 Locate();
                 this.located = true;
             }
-            return base.GetCurrentValue(defaultOriginValue, defaultDestinationValue, animationClock);
+            return base.GetCurrentValue(defaultOriginValue, defaultDestinationValue, clockValue);
         }
 
         private void Locate()
@@ -82,7 +81,6 @@ namespace XPFriend.JenkinsOnDesktop.Animation
             MainWindow window = MainWindow.Current;
             Direction direction = this.Direction;
             if (direction == Direction.Left || 
-                direction == Direction.Center ||
                 direction == Direction.Right)
             {
                 window.Top = WindowOperator.GetTop(window, this.Position);

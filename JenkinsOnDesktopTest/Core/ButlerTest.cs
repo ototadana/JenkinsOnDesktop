@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Windows.Forms;
-using System.Threading;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Globalization;
-using XPFriend.JenkinsOnDesktop.Core.Folder;
 using System.IO;
+using System.Threading;
+using System.Windows.Forms;
+using XPFriend.JenkinsOnDesktop.Core.Folder;
 
 namespace XPFriend.JenkinsOnDesktop.Core
 {

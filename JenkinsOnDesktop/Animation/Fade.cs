@@ -11,16 +11,16 @@ namespace XPFriend.JenkinsOnDesktop.Animation
             this.To = to;
         }
 
-        public override object GetCurrentValue(
+        protected internal override object GetCurrentValue(
             object defaultOriginValue, 
             object defaultDestinationValue, 
-            AnimationClock animationClock)
+            double clockValue)
         {
             if (this.From == null)
             {
                 this.From = MainWindow.Current.Opacity;
             }
-            return base.GetCurrentValue(defaultOriginValue, defaultDestinationValue, animationClock);
+            return base.GetCurrentValue(clockValue);
         }
     }
 }

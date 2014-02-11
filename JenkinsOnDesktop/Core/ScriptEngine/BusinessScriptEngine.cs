@@ -21,17 +21,8 @@ namespace XPFriend.JenkinsOnDesktop.Core.ScriptEngine
             PowerShell powerShell = base.GetPowerShell();
             SetWorkingDirectory(powerShell, BusinessesFolder.GetFolder(businessName));
             powerShell.AddScript(@"foreach($i in $input) {$report = $i};. .\main.ps1;Main " + parameters);
-            try
-            {
-                Collection<PSObject> results = powerShell.Invoke(new[] { report });
-                return GetObject<Hashtable>(powerShell, results);
-            }
-            catch (RuntimeException e)
-            {
-                StringBuilder sb = new StringBuilder(GetErrorText(powerShell));
-                Append(sb, e.ErrorRecord);
-                throw new ApplicationException(sb.ToString());
-            }
+            Collection<PSObject> results = Invoke(powerShell, new[] { report });
+            return GetObject<Hashtable>(powerShell, results);
         }
     }
 }

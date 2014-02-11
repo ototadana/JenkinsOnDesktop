@@ -29,9 +29,9 @@ namespace XPFriend.JenkinsOnDesktop
         {
             get
             {
-                if (current == null)
+                if (current == null && App.Current != null)
                 {
-                    current = App.Instance.MainWindow as MainWindow;
+                    current = App.Current.MainWindow as MainWindow;
                 }
                 return current;
             }
@@ -274,11 +274,16 @@ namespace XPFriend.JenkinsOnDesktop
 
         internal void Quit()
         {
+            HideNotifyIcon();
+            App.Current.Shutdown();
+        }
+
+        internal void HideNotifyIcon()
+        {
             if (this.notifyIcon != null)
             {
                 this.notifyIcon.Visible = false;
             }
-            App.Instance.Shutdown();
         }
 
         internal void UpdateWindow()

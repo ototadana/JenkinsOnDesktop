@@ -31,8 +31,7 @@ namespace XPFriend.JenkinsOnDesktop.Animation
         protected virtual void UpdateProperties()
         {
             if (this.Direction == Direction.Left || 
-                this.Direction == Direction.Right || 
-                this.Direction == Direction.Center)
+                this.Direction == Direction.Right)
             {
                 Storyboard.SetTargetProperty(this, new PropertyPath("Left"));
             }
@@ -42,17 +41,17 @@ namespace XPFriend.JenkinsOnDesktop.Animation
             }
         }
 
-        public override object GetCurrentValue(
+        protected internal override object GetCurrentValue(
             object defaultOriginValue, 
             object defaultDestinationValue, 
-            AnimationClock animationClock)
+            double clockValue)
         {
-            if (From == null)
+            if (this.From == null)
             {
                 this.To = GetToPropertyValue();
                 this.From = GetFromPropertyValue();
             }
-            return base.GetCurrentValue(defaultOriginValue, defaultDestinationValue, animationClock);
+            return base.GetCurrentValue(clockValue);
         }
 
         protected abstract double? GetToPropertyValue();
