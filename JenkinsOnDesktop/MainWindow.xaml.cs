@@ -55,6 +55,7 @@ namespace XPFriend.JenkinsOnDesktop
             this.parameters.LostFocus += (sender, e) => this.businessExamplesPopup.IsOpen = false;
             this.parameters.GotFocus += (sender, e) => this.businessExamplesPopup.IsOpen = true;
             this.parameters.PreviewMouseDown += (sender, e) => this.businessExamplesPopup.IsOpen = true;
+            this.Deactivated += (sender, e) => this.businessExamplesPopup.IsOpen = false;
             this.MouseDown += (sender, e) => CloseBusinessExamples();
 
             this.ShowInTaskbar = false;
@@ -62,7 +63,13 @@ namespace XPFriend.JenkinsOnDesktop
             this.notifyIcon.ContextMenuStrip = CreateContextMenu();
             this.notifyIcon.Visible = true;
             ApplySettings(this.Workspace);
-            this.notifyIcon.DoubleClick += (sender, e) => ShowWindow();
+            this.notifyIcon.MouseClick += (sender, e) =>
+            {
+                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    ShowWindow();
+                }
+            };
 
             this.timer.Tick += (sender, e) => DoBusinessAndUpdateWindow(this.Workspace.Butler);
             StartTimer();
@@ -134,7 +141,6 @@ namespace XPFriend.JenkinsOnDesktop
                     callTheButlerMenuItem.Font.Style ^ System.Drawing.FontStyle.Bold);
             callTheButlerMenuItem.Click += (sender, e) => ShowWindow();
             callTheButlerMenuItem.Visible = false;
-            contextMenu.Opening += (sernder, e) => callTheButlerMenuItem.Select();
             return callTheButlerMenuItem;
         }
 
@@ -201,7 +207,12 @@ namespace XPFriend.JenkinsOnDesktop
 
         private bool IsOnDesktop()
         {
-            return this.IsVisible && this.Opacity > 0.0 &&
+            return IsOnDesktop(this.IsVisible);
+        }
+
+        internal bool IsOnDesktop(bool isVisible)
+        {
+            return isVisible && this.Opacity > 0.0 &&
                 this.Left >= 0.0 && this.Left < this.ScreenWidth &&
                 this.Top >= 0.0 && this.Top < this.ScreenHeight;
         }
@@ -280,10 +291,7 @@ namespace XPFriend.JenkinsOnDesktop
 
         internal void HideNotifyIcon()
         {
-            if (this.notifyIcon != null)
-            {
-                this.notifyIcon.Visible = false;
-            }
+            this.notifyIcon.Visible = false;
         }
 
         internal void UpdateWindow()
@@ -359,7 +367,7 @@ namespace XPFriend.JenkinsOnDesktop
 
         #region "Configuration : Initialize"
 
-        private void ShowConfiguration(Butler butler)
+        internal void ShowConfiguration(Butler butler)
         {
             AddButlerNames();
             UpdateButlerInformations(butler);
@@ -406,7 +414,7 @@ namespace XPFriend.JenkinsOnDesktop
             this.butlerImageSample.Source = butler.TypicalAppearanceImage;
         }
 
-        private void UpdateBusinessInformation(string name)
+        internal void UpdateBusinessInformation(string name)
         {
             BusinessInformation businessInformation = BusinessInformation.GetInstance(name);
             this.businessSynopsis.Text = businessInformation.Synopsis;

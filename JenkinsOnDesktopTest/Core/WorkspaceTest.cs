@@ -47,14 +47,19 @@ namespace XPFriend.JenkinsOnDesktop.Core
             
             // then
             Assert.AreNotSame(report, workspace.Report);
-            Assert.IsNotNull(workspace.Business);
-            Assert.IsNotNull(workspace.Butler);
-            Assert.IsNotNull(workspace.Configuration);
+            AssertInitialized(workspace);
             Assert.IsFalse(workspace.HasConfigurationFile);
             Assert.IsTrue(Directory.Exists(Path.Combine(WorkspaceFolder.FullName, "Butlers", "Calm-Jenkins")));
             Assert.IsTrue(Directory.Exists(Path.Combine(WorkspaceFolder.FullName, "Butlers", "Emotional-Jenkins")));
             Assert.IsTrue(Directory.Exists(Path.Combine(WorkspaceFolder.FullName, "Businesses", "Time-keeping")));
             Assert.IsTrue(Directory.Exists(Path.Combine(WorkspaceFolder.FullName, "Businesses", "Check-job-status")));
+        }
+
+        internal static void AssertInitialized(Workspace workspace)
+        {
+            Assert.IsNotNull(workspace.Business);
+            Assert.IsNotNull(workspace.Butler);
+            Assert.IsNotNull(workspace.Configuration);
         }
 
         [TestMethod]

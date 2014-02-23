@@ -70,12 +70,7 @@ namespace XPFriend.JenkinsOnDesktop.Core
         public void TestUpdateAppearance()
         {
             // setup
-            Report report = new Report();
-            report.Hashtable.Add("IsUpdated", true);
-            report.Hashtable.Add("SourceUrl", "http://localhost/");
-            report.Hashtable.Add("Subject", "aaa");
-            report.Hashtable.Add("CurrentStatus", "bbb");
-            report.Hashtable.Add("Title", "ccc");
+            Report report = CreateReport();
 
             {
                 // when
@@ -138,6 +133,17 @@ namespace XPFriend.JenkinsOnDesktop.Core
                 Assert.IsNotNull(butler.EnterAnimation);
                 Assert.IsNotNull(butler.ExitAnimation);
             }
+        }
+
+        internal static Report CreateReport()
+        {
+            Report report = new Report();
+            report.Hashtable.Add("IsUpdated", true);
+            report.Hashtable.Add("SourceUrl", "http://localhost/");
+            report.Hashtable.Add("Subject", "aaa");
+            report.Hashtable.Add("CurrentStatus", "bbb");
+            report.Hashtable.Add("Title", "ccc");
+            return report;
         }
 
         [TestMethod]

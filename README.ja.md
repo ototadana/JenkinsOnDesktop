@@ -21,7 +21,7 @@ JenkinsOnDesktop
 
 ダウンロード
 ------------
-*   [http://xpfriend.com/jod/JenkinsOnDesktop-0.9.1.zip](http://xpfriend.com/jod/JenkinsOnDesktop-0.9.1.zip)
+*   [http://xpfriend.com/jod/JenkinsOnDesktop-1.0.zip](http://xpfriend.com/jod/JenkinsOnDesktop-1.0.zip)
 
 
 セットアップ

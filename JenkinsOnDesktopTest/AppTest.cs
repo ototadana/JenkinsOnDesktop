@@ -28,7 +28,7 @@ namespace XPFriend.JenkinsOnDesktop
         public void TestHandleException()
         {
             // setup
-            App app = new App();
+            App app = GetApp();
             MainWindow window = new MainWindow();
             app.MainWindow = window;
 
@@ -52,6 +52,15 @@ namespace XPFriend.JenkinsOnDesktop
             Assert.IsTrue(logText.Contains("exception2"));
             Assert.IsTrue(logText.Contains(" ---> "));
             Assert.IsTrue(logText.Contains(logFile));
+        }
+
+        internal static App GetApp()
+        {
+            if (App.Current != null)
+            {
+                return (App)App.Current;
+            }
+            return new App();
         }
     }
 }
