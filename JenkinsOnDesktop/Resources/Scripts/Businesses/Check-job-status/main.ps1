@@ -4,7 +4,7 @@
 Reports job statuses of a build server.
 
 .DESCRIPTION
-Copyright (C) 2014 XPFriend Community.
+Copyright (C) 2014-2016 XPFriend Community.
 This software is released under the MIT License.
 
 .EXAMPLE
@@ -44,10 +44,9 @@ Param(
         $client = New-Object System.Net.WebClient
         try {
             if(![System.String]::IsNullOrEmpty($user)) {
-                $credential = New-Object System.Net.NetworkCredential($user, $password);
+                $authInfo = [System.Convert]::ToBase64String([System.Text.Encoding]::Default.GetBytes($user + ":" + $password))
+                $client.Headers.Add("Authorization", "Basic " + $authInfo)
             }
-            $client.Credentials = $credential
-
             $document = [xml]$client.DownloadString($url)
 
             $projects = $document.Projects.Project

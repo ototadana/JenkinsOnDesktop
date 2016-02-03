@@ -20,7 +20,7 @@ Requirement
 
 Download
 --------
-*   [http://xpfriend.com/jod/JenkinsOnDesktop-1.0.zip](http://xpfriend.com/jod/JenkinsOnDesktop-1.0.zip)
+*   [http://xpfriend.com/jod/JenkinsOnDesktop-1.1.zip](http://xpfriend.com/jod/JenkinsOnDesktop-1.1.zip)
 
 
 Setup

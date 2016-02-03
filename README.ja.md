@@ -21,7 +21,7 @@ JenkinsOnDesktop
 
 ダウンロード
 ------------
-*   [http://xpfriend.com/jod/JenkinsOnDesktop-1.0.zip](http://xpfriend.com/jod/JenkinsOnDesktop-1.0.zip)
+*   [http://xpfriend.com/jod/JenkinsOnDesktop-1.1.zip](http://xpfriend.com/jod/JenkinsOnDesktop-1.1.zip)
 
 
 セットアップ
@@ -65,7 +65,7 @@ Set-ExecutionPolicy RemoteSigned
 
 ライセンス
 ----------
-*   This software is released under the MIT License.
+*   このソフトウェアのライセンスは MIT です。
 
 *   [jenkins.png](./JenkinsOnDesktop/Resources/Images/jenkins.png)
     and [jenkins_icon.ico](./JenkinsOnDesktop/Resources/Images/jenkins_icon.ico)

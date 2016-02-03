@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>JenkinsOnDesktop</id>
+    <title>JenkinsOnDesktop</title>
+    <version>$version$</version>
+    <authors>XPFriend Community</authors>
+    <owners>XPFriend Community</owners>
+    <description>Today, Jenkins the butler will come to your desktop.</description>
+    <projectUrl>https://github.com/ototadana/JenkinsOnDesktop</projectUrl>
+    <tags>JenkinsOnDesktop Jenkins CI notify notifier task tray</tags>
+    <copyright>Copyright 2014 XPFriend Community</copyright>
+    <licenseUrl>https://github.com/ototadana/JenkinsOnDesktop/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://raw.githubusercontent.com/ototadana/JenkinsOnDesktop/master/JenkinsOnDesktop/Resources/Images/jenkins_icon.ico</iconUrl>
+  </metadata>
+  <files>
+    <file src="..\README.*" target="." />
+    <file src="bin\Release\JenkinsOnDesktop.exe" target="." />
+    <file src="bin\Release\JenkinsOnDesktop.exe.gui" target="." />
+    <file src="bin\Release\ja\*" target="ja" />
+  </files>
+</package>

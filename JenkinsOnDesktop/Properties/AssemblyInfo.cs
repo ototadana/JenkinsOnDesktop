@@ -13,7 +13,7 @@ using System.Windows.Markup;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("XPFriend Community")]
 [assembly: AssemblyProduct("JenkinsOnDesktop")]
-[assembly: AssemblyCopyright("Copyright ©  2014 XPFriend Community")]
+[assembly: AssemblyCopyright("Copyright ©  2014-2016 XPFriend Community")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -56,4 +56,4 @@ using System.Windows.Markup;
 // すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.1.*")]
